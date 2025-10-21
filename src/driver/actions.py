@@ -19,9 +19,6 @@ def clicar(driver, by, value, timeout=10):
 
     return None
 
-
-
-
 def digitar(driver, by, value, text, timeout=10):
     
     try:

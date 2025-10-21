@@ -1,18 +1,16 @@
+# Logar na conta a ser utilizada
 from driver import actions
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 
 
-def preencher_login(driver, login, senha):
-    driver.find_element(
-        "Usuário"
-        ).send_keys(login)
+class logar_usuario:
     
-    driver.find_element(
-        "Senha"
-        ).send_keys(senha)
+    def __init__(self, driver):
+        self.driver = driver
+        self.wait = WebDriverWait(self.driver, 10)
     
-    driver.find_element(
-        "Entrar"
-        ).click()
-    
-actions.clicar
-    
+    def logar(self, login, senha):
+        actions.digitar(self.driver, By.NAME, "field-username", login)
+        actions.digitar(self.driver, By.NAME, "field-password", senha)
+        actions.clicar(self.driver, By.NAME, "btn-login")
