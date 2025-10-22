@@ -1,7 +1,6 @@
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -14,7 +13,7 @@ login = os.getenv("login")
 senha = os.getenv("senha")
 
 
-df = pd.read_excel(r"C:\Users\vitor\Documents\UNIG\Automação\Inserção de Avaliações.xlsx")
+df = pd.read_excel(r"C:\Users\vitor\Documents\UNIG\Automação\Automacao-WEB\src\data\Inserção de Avaliações.xlsx")
 index_inicial = 288
 
 
@@ -33,12 +32,12 @@ web = WebDriverWait(driver, 10)
 #Login
 web.until(
  EC.presence_of_element_located((By.NAME, "field-username"))
-).send_keys(login)
+).send_keys("vitor.nascimento")
 
 # Senha                                             
 web.until(
  EC.presence_of_element_located((By.NAME, "field-password"))
-).send_keys(senha)
+).send_keys("@VEaa19102024")
 
 # Entrar
 web.until(
@@ -79,7 +78,7 @@ for i in range(2):
         ).click()
     except:
         pass
-print()
+print("Ta ok")
     
 # Aplicar filtros
 web.until(

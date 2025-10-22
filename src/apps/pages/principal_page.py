@@ -17,4 +17,15 @@ class pagina_principal:
     def selecionar_filtros(self):
         actions.clicar(self.driver, By.XPATH, "//button[contains(., 'Filtros')]")
         actions.clicar(self.driver, By.ID, "list-courses-more-filters-status")
-        actions.clicar(self.driver, By.CSS_SELECTOR, ".vue-treeselect__option-label")
+        actions.clicar(self.driver, By.XPATH, "/html/body/div[1]/div/div/div[2]/div[1]/main/div/div/div/div/div/div[1]/div[1]/div[3]/div/div[1]/div[3]/aside/div[1]/div/div[2]/label[2]/div/div/div/div[1]/div[1]/div[3]")
+        
+        for i in range(2):
+            try:
+                actions.clicar(self.driver, By.XPATH, "/html/body/div[5]/div/div/div[1]/div[2]/div/div")
+            except:
+                pass
+        
+        actions.clicar(self.driver, By.XPATH, "//button[contains(., 'Aplicar filtros')]")
+    
+    
+        

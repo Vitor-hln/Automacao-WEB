@@ -2,3 +2,5 @@ pandas==2.3.3
 python-dotenv==1.1.1
 selenium==4.37.0
 webdriver_manager==4.0.2
+openpyxl
+tk
