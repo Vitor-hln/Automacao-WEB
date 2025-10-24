@@ -16,7 +16,7 @@ def clicar(driver, by, value, timeout=10):
         elemento_clicavel.click()
         
     except Exception as e:
-        print("❌ Elemento nao encontrado ❌")
+        print(f"❌ {e} ❌")
 
     return None
 
@@ -30,7 +30,7 @@ def digitar(driver, by, value, text, timeout=10):
         campo_digitavel.send_keys(text)
         
     except Exception as e:
-        print("❌ Campo digitavel não encontrado ou não pode ser digitado ❌")
+        print(f"❌{e}❌")
 
     return None
 
