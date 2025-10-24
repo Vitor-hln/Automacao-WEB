@@ -1,5 +1,5 @@
 # Importa suas funções de ação
-from apps.driver import actions 
+from utils import actions 
 # Imports do Selenium
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait

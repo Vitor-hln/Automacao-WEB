@@ -47,14 +47,9 @@ def main():
     # Pagina Princcipal
     pp = principal_page.pagina_principal(nav.driver)
     pp.acessar_disciplinas()
-    pp.selecionar_filtros()
-    
-    
-
-            
-            
+    pp.selecionar_filtros() 
         
-        
+    print("parou aqui")
 
     
 if __name__ == "__main__":

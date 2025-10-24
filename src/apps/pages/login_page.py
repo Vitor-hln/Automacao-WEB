@@ -1,5 +1,5 @@
 # Logar na conta a ser utilizada
-from apps.driver import actions
+from utils import actions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
