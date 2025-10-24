@@ -4,7 +4,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class Navegador:
-    def abrir():
+    def __init__(self):
+        pass
+    
+    def abrir(self):
         try:
             # Configurações do navegador (opcional)
             options = webdriver.ChromeOptions()
@@ -14,25 +17,30 @@ class Navegador:
             # Rodar a janela em tela cheia | options.add_argument("--start-maximized") 
             options.add_argument("--start-maximized")
 
-            driver = webdriver.Chrome(
+            self.driver = webdriver.Chrome(
             service=Service(
                 ChromeDriverManager().install()),
                 options=options
             )
 
 
-            driver.implicitly_wait(10) # Regra geral - Procura o elemente por até 10 segundos
+            self.driver.implicitly_wait(10) # Regra geral - Procura o elemente por até 10 segundos
 
         except Exception as e:
             print("Falha ao iniciar o navegador!")
 
         return None
 
-    def abrir_site(driver, url):
-        driver.get(url)
+    def abrir_url(self, url):
+        if self.driver:
+            self.driver.get(url)
+        else:
+            print("⚠️ O navegador ainda não foi iniciado!")
 
+    def fechar_navegador(self):
 
-    def fechar_navegador(driver):
-
-        if driver:
-            driver.quit()
+        if self.driver:
+            self.driver.quit()
+            print("🧹 Navegador fechado.")
+        else:
+            print("⚠️ Nenhum navegador para fechar.")

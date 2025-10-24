@@ -33,18 +33,27 @@ def digitar(driver, by, value, text, timeout=10):
 
     return None
 
-def procurar_elemento(driver, by, value, timeout=10):
-    
-    try:
-
-        procura = WebDriverWait(driver, timeout).ultil(
-            EC.presence_of_element_located((by,value))
-        )
-        procura.click()
-
-    except Exception as e:
-        print("❌ A procura Falhou ❌\n ❌ Elemento não encontrado! ❌")
+def procurar_elemento(driver, by, value, action, timeout=10, **kwargs):
+    """
+    Função central (Dispatcher) que decide qual ação executar.
+    """
+    match str(action).lower():
         
+        case "clicar":
+            clicar(driver, by, value, timeout)
+
+        case "digitar":
+            if 'text' in kwargs:
+                texto_a_digitar = kwargs['text']
+                # --- CORREÇÃO: Passa a variável 'timeout', não o valor fixo 10 ---
+                digitar(driver, by, value, texto_a_digitar, timeout=timeout) 
+            else:
+                # --- CORREÇÃO: Mensagem de erro mais clara ---
+                print(f"❌ Erro de Lógica: Ação 'digitar' foi chamada, mas o argumento 'text' não foi fornecido. ❌")
+                
+        case _:
+            print(f"❌ Erro: Ação '{action}' desconhecida. Use 'clicar' ou 'digitar'. ❌")
+            
     return None
 
         

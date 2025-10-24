@@ -1,10 +1,10 @@
 # Logar na conta a ser utilizada
-from driver import actions
+from apps.driver import actions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-class logarUsuario:
+class LogarUsuario:
     
     def __init__(self, driver):
         self.driver = driver
