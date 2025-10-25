@@ -2,7 +2,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver import ActionChains
 
 
 def clicar(driver, by, value, timeout=10):
@@ -45,3 +45,16 @@ def clicar_por_texto(driver, texto, timeout=10):
         print(f"✅ Botão '{texto}' clicado com sucesso!")
     except Exception as e:
         print(f"❌ Falha ao clicar no botão '{texto}': {e}")
+        
+        
+def Localizar(driver, by, value, timeout=10):
+    try:
+        elemento = WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((by, value))
+        )
+        return elemento.click()
+    except Exception as e:
+        print(f"❌ Erro ao localizar elemento: {e} ❌")
+        return None
+    
+    

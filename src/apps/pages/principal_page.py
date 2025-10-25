@@ -1,7 +1,7 @@
 # Página princial da plataforma
 # Até disciplinas
-from utils.actions import clicar, digitar,clicar_por_texto
 from selenium.webdriver.common.by import By
+from utils.actions import clicar, digitar,clicar_por_texto
 from selenium.webdriver.support.ui import WebDriverWait
 
 

@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 
+
 class Navegador:
     def __init__(self):
         pass
@@ -44,3 +45,21 @@ class Navegador:
             print("🧹 Navegador fechado.")
         else:
             print("⚠️ Nenhum navegador para fechar.")
+            
+    
+    def focar_na_aba_atual(self):
+        try:
+            if self.driver:
+                # Pega a última aba aberta (a que ficou após o fechamento)
+                aba_ativa = self.driver.window_handles[-1]
+                self.driver.switch_to.window(aba_ativa)
+        except Exception as e:
+            print(f"Erro ao acessar aba principal: {e}")
+    
+    def fechar_aba_atual(self):
+        try:
+            if self.driver:
+                self.driver.close()
+        except Exception as e:
+            print(f"Erro ao fechar aba atual: {e}")
+            

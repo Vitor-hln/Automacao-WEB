@@ -2,8 +2,10 @@ import os
 from dotenv import load_dotenv
 from apps.driver.browser import Navegador
 from apps.pages import login_page, notas_page, principal_page
+from apps.loop.loop import looper
 from data.importacao import Importador_de_arquivos
 from utils.utils import msg_erro
+
 
 
 def main():
@@ -39,17 +41,30 @@ def main():
     nav = Navegador()
     nav.abrir()
     nav.abrir_url(url)
+    driver = nav.driver
     
     # Login
-    user = login_page.LogarUsuario(nav.driver)
+    user = login_page.LogarUsuario(driver)
     user.logar(login, senha)
     
     # Pagina Princcipal
-    pp = principal_page.pagina_principal(nav.driver)
+    pp = principal_page.pagina_principal(driver)
     pp.acessar_disciplinas()
     pp.selecionar_filtros() 
         
-    print("parou aqui")
+    for index, row in df.iterrows():
+        disciplina = row['Nome']
+        nav.focar_na_aba_atual() 
+        l = looper(driver)
+        
+        l.acessar_disciplinas(disciplina)
+        l.adicionar_notas()
+        l.abrir_menu_formula_nota_final()
+        l.inserir_formula()
+        l.validar_formula()
+        
+        driver.close()    
+        
 
     
 if __name__ == "__main__":
