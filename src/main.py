@@ -52,7 +52,7 @@ def main():
     pp.acessar_disciplinas()
     pp.selecionar_filtros() 
         
-    for index, row in df.iterrows():
+    for _, row in df.iterrows():
         disciplina = row['Nome']
         nav.focar_na_aba_atual() 
         l = looper(driver)
